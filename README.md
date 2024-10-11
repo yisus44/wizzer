@@ -27,6 +27,19 @@ $ docker compose up -d
 ```bash
 $ npm run migration:run
 ```
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# dev
+$ npm run dev
+
+# production mode
+$ npm run start:prod
+```
+
 ## Generating migrations
 
 A.  Generate new migration
@@ -50,48 +63,7 @@ C. Revert last migration
 ```bash
 $ npm run migration:revert
 ``` 
-## Running the app
 
-```bash
-# development
-$ npm run start
-
-# dev
-$ npm run dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Creating migrations
-
-1. Run the command:
-
-```bash
-$ sudo npm run typeorm:generate-migration --name=NameOfTheMigration
-```
-
-2. Go to the folder /migrations, search for you migration and change the neccesary SQL command.
-
-3. Now you can run
-
-```bash
-$ npm run typeorm:run-migrations
-```
-
-## Reverting migrations
-
-1. Run the following command to undo the last migration
-
-```bash
-$ typeorm:revert-migration
-```
-
-Note: You can delete a migration file without running any command on your terminal, the configuration takes care of only running the migrations that are present in the /migration folders
-
-## Additional notes
-
-1. Always use the AuthGuard on the top of the controller when using Permissions decorator, otherwise the permission decorator will take preference and it wont found the user in the request
 
 ## Test
 
