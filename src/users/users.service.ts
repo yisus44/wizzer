@@ -4,7 +4,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('users')
 @Injectable()
 export class UsersService {
   constructor(

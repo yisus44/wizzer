@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
-
+import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
+@ApiTags('tasks')
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
@@ -13,8 +15,9 @@ export class TasksController {
   }
 
   @Get()
-  findAll() {
-    return this.tasksService.findAll();
+  @ApiQuery({ name: 'userId', required: false, type: Number })
+  findAll(@Query() paginationDto: PaginationDto, @Query("userId") userId: number) {
+    return this.tasksService.findPaginated(paginationDto, +userId > 0 ? {userId} : {});
   }
 
   @Get(':id')
@@ -24,7 +27,7 @@ export class TasksController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    return this.tasksService.update(+id, updateTaskDto);
+    return this.tasksService.updateTask(+id, updateTaskDto);
   }
 
   @Delete(':id')
