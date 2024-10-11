@@ -9,7 +9,7 @@ export class CreateUserDto {
     @MinLength(5)
     @ApiProperty({
         type: String,
-        description: 'Correo electronico',
+        description: 'User email',
     })
     email:string;
 
@@ -19,7 +19,7 @@ export class CreateUserDto {
     @MinLength(3)
     @ApiProperty({
         type: String,
-        description: 'Nombre del usuario',
+        description: 'User fullname',
     })
     name:string;
 
@@ -29,7 +29,7 @@ export class CreateUserDto {
     @MinLength(8)
     @ApiProperty({
         type: String,
-        description: 'Contraseña del usuario',
+        description: 'User password with minimun length of 8',
     })
     password:string;
 }
