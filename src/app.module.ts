@@ -6,11 +6,13 @@ import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import{ dataSourceOptions } from 'datasource';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot(dataSourceOptions), 
+    CommonModule,
     UsersModule, TasksModule],
   controllers: [AppController],
   providers: [AppService],
