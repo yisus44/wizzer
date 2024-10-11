@@ -9,4 +9,11 @@ export class UpdateTaskDto extends PartialType(CreateTaskDto) {
         description: 'Tasks status',
     })
     isCompleted: boolean;
+
+     //as of now, we have to 
+     @ApiProperty({
+        type: String,
+        description: 'Tasks details',
+    })
+    details: string;
 }

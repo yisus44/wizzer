@@ -40,6 +40,8 @@ $ npm run dev
 $ npm run start:prod
 ```
 
+Check the swagger on http://localhost:3000/api
+
 ## Generating migrations
 
 A.  Generate new migration
